@@ -5,7 +5,7 @@ public class Input {
     public static int secondNum;
     public static int lastNum;
 
-    public static void input() {
+    public  void input() {
         System.out.println("введите три числа");
 
         Scanner sc = new Scanner(System.in);
