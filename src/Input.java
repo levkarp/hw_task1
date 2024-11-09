@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// создание ветки-проверка
 public class Input {
     public static int firstNum;
     public static int secondNum;
