@@ -4,32 +4,32 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    int year;
+    static int year;
 
-    public static void main(String[] args) throws Exception {
-        Main main = new Main();
-        main.input();
-        main.determinatonYear();
+    public static void main(String[] args)  {
+
+        inputYear();
+        determinatonYear();
 
     }
 
-    public int input() throws Exception {
+    public static void inputYear() {
 
-        try {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("введите год в формате 'yyyy'");
-            year = sc.nextInt();
-            System.out.println(year);
-        } catch (InputMismatchException exception) {
-            System.out.println("вы ввели не число в формате 'yyyy'");
 
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("введите год в формате 'yyyy'");
+        year = sc.nextInt();
+        System.out.println(year);
 
-        return year;
+
+
     }
 
-    public void determinatonYear() {
-        if (year % 4 == 0 && year % 100 != 0) {
+    public static void determinatonYear() {
+        if (year % 400 == 0) {
+            System.out.println("год високосный");
+            System.out.println(366);
+        } else if (year % 4 == 0 && year % 100 != 0) {
             System.out.println("год високосный");
             System.out.println(366);
         } else {

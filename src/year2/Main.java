@@ -4,64 +4,63 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    int year;
-    int daysInput;
-    int count;
-    Scanner sc = new Scanner(System.in);
+    static int year;
+    static int daysInput;
+    static int count = 0;
+    public static Scanner sc = new Scanner(System.in);
 
 
     public static void main(String[] args) {
-        ;
 
-        Main main = new Main();
-        main.testResult();
+
+        testResult();
 
 
     }
 
 
-//    public int inputYear()  {
-//
-//            System.out.println("введите год в формате 'yyyy'");
-//            year = sc.nextInt();
-//                 System.out.println(year);
-//      //  sc.close();
-//        return year;
-//    }
 
 
-//    public int inputDays()  {
-//
-//
-//               System.out.println("введите число дней в этом году'");
-//        daysInput = sc.nextInt();
-//        System.out.println(daysInput);
-//     //   sc.close();
-//               return daysInput;
-//    }
-
-    public void testResult() {
+    public static void testResult() {
         while (true) {
-            System.out.println("введите год в формате 'yyyy'");
-            year = sc.nextInt();
-            System.out.println(year);
-            System.out.println("введите число дней в этом году'");
-            daysInput = sc.nextInt();
-            System.out.println(daysInput);
+            input();
 
-            if ((year % 4 == 0 && year % 100 == 0) && daysInput == 366) {
+            if (determinatonYear() == daysInput) {
                 count++;
-            } else if ((year % 4 != 0 && year % 100 != 0) && daysInput == 365) {
-                count++;
+
             } else {
-                System.out.println("Не правильно в этом году не" + " " + daysInput);
-                System.out.println("Набрано очков" + " " + count);
+                System.out.println("Упс, ошибка! В этом году " + determinatonYear() + " дней. " +
+                        "Ты набрал " + count + " очков!");
                 break;
             }
 
-
         }
 
+
+    }
+
+    public static void input() {
+
+        System.out.println("введите год в формате 'yyyy' и количество дней");
+        year = sc.nextInt();
+
+        daysInput = sc.nextInt();
+
+    }
+
+    public static int determinatonYear() {
+        int days;
+        if (year % 400 == 0) {
+
+            days = 366;
+        } else if (year % 4 == 0 && year % 100 != 0) {
+
+            days = 366;
+        } else {
+
+            days = 365;
+        }
+        return days;
     }
 
 
