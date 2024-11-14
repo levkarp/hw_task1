@@ -27,7 +27,7 @@ public class Main {
 
     public static void determinatonYear() {
         if (year % 400 == 0) {
-            System.out.println("год високосный");
+            System.out.println("год високосный!");
             System.out.println(366);
         } else if (year % 4 == 0 && year % 100 != 0) {
             System.out.println("год високосный");

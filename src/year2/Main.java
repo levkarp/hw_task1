@@ -29,7 +29,7 @@ public class Main {
                 count++;
 
             } else {
-                System.out.println("Упс, ошибка! В этом году " + determinatonYear() + " дней. " +
+                System.out.println("Упс, ошибка!!! В этом году " + determinatonYear() + " дней. " +
                         "Ты набрал " + count + " очков!");
                 break;
             }
