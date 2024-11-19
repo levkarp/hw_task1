@@ -31,72 +31,100 @@ import java.util.Scanner;
 Выведем результат.
  */
 public class Main {
-   public static Scanner scanner=new Scanner(System.in);
-   public static double num1;
-   public static float num2;
-    public static void main(String[] args) {
+    public static Scanner scanner = new Scanner(System.in);
+    public static double num1;
+    public static float num2;
 
-actions();
+    public static void main(String[] args) throws Exception {
+
+        actions();
 
 
+    }
 
-        }
-        public static int input(){
 
-            System.out.println("Операции над double/float нажмите\n" +
-                    "1. Сравнить\n" +
-                    "2. Округлить\n" +
-                    "3. Отбросить дробную часть\n");
-            int input=scanner.nextInt();
-            System.out.println("введите два вещественных числа, введите первое");
-            num1= scanner.nextDouble();
-            System.out.println("введите второе число");
-            num2=scanner.nextFloat();
-            scanner.close();
-            return input;
-        }
-        public static void actions(){
+    public static void actions() throws Exception {
 //хотел обернуть в беск цикл, чтобы не запускать заново, но возникала ошибка
+        while (true) {
+            System.out.println("""
+                    Операции над double/float нажмите
+                   "1. Сравнить" +
+                    2. Округлить" +
+                    3. Отбросить дробную часть" +
+                    "Или введите 'end'""");
 
+            String input = scanner.nextLine();
 
-           switch (input()) {
-               case 1 -> compare();
-               case 2 -> round();
-               case 3 -> diskard();
-
-           }
-
-
-        }
-        public static void compare(){
-            System.out.println("сравнение чисел");
-
-
-            if(Math.abs(num2 - num1) < 0.000001) {
-                System.out.println("Числа равны");
-            } else {
-                System.out.println("Числа не равны");
+            if (input.equals("end")) {
+                System.out.println("Закрываем сканнер...");
+                Thread.sleep(300);
+                scanner.close();
+                System.out.println("Завершаем работу программы");
+                Thread.sleep(300);
+                break;
             }
+            int operation = Integer.parseInt(input);
 
+            switch (operation) {
+
+                case 1 -> {
+                    input();
+                    compare();
+                }
+                case 2 -> {
+                    input();
+                    round();
+                }
+                case 3 -> {
+                    input();
+                    diskard();
+                }
+                default -> System.out.println("Вы ввели не те данные!");
+
+            }
         }
 
-    public static void round(){
-        System.out.println("округлить");
+    }
+
+    public static void input() {
+
+        System.out.println("введите два вещественных числа, введите первое");
+        num1 = scanner.nextDouble();
+        System.out.println("введите второе число");
+        num2 = scanner.nextFloat();
+        scanner.nextLine();
+
+    }
+
+    public static void compare() {
+
+        //сравнение чисел
+
+        if (Math.abs(num2 - num1) < 0.000001) {
+            System.out.println("Числа равны");
+        } else {
+            System.out.println("Числа не равны");
+        }
+
+    }
+
+    public static void round() {
+
+     //"округлить;
+
         System.out.println(Math.round(num1));
         System.out.println(Math.round(num2));
 
     }
 
-    public static void diskard(){
+    public static void diskard() {
         System.out.println("отбросить дробную часть");
-        num1=(long)num1;
-        num2=(long)num2;
+        num1 = (long) num1;
+        num2 = (long) num2;
         System.out.println(num1);
         System.out.println(num2);
 
 
     }
-//    public static void end(){
-//System.exit(-1);
-//    }
-    }
+
+}
